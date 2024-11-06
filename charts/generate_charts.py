@@ -842,6 +842,6 @@ if __name__ == "__main__":
 
     index_html = template.render(charts=charts, title="Charts", image_format=image_format, re=re, output=output)
 
-    f = open(f"{output}index.html", "w")
+    f = open(f"index.html", "w")
     f.write(index_html)
     f.close()
