@@ -1,5 +1,5 @@
 {
-  "workload" : "100_topics_1_partition_1Kb_kraft_1_broker_acks_all",
+  "workload" : "k1_a=all",
   "driver" : "Kafka",
   "version" : null,
   "beginTime" : "2024-11-05-13-55-12",
