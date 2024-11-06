@@ -28,7 +28,6 @@ variable "key_name" {
 
 variable "region" {}
 variable "az" {}
-variable "profile" {}
 
 variable "deploy_ami" {}
 variable "redpanda_ami" {}
@@ -220,8 +219,8 @@ resource "aws_instance" "prometheus" {
 resource "local_file" "hosts_ini" {
   content = templatefile("${path.module}/../hosts_ini.tpl",
     {
-      redpanda_public_ips   = aws_instance.redpanda.*.public_ip
-      redpanda_private_ips  = aws_instance.redpanda.*.private_ip
+      redpanda_public_ips   = [for r in aws_instance.redpanda: r.public_ip]
+      redpanda_private_ips  = [for r in aws_instance.redpanda: r.private_ip]
       clients_public_ips   = aws_instance.client.*.public_ip
       clients_private_ips  = aws_instance.client.*.private_ip
       prometheus_host_public_ips   = aws_instance.prometheus.*.public_ip
@@ -237,8 +236,8 @@ resource "local_file" "hosts_ini" {
 resource "local_file" "hosts_private_ini" {
   content = templatefile("${path.module}/../hosts_private_ini.tpl",
     {
-      redpanda_public_ips   = aws_instance.redpanda.*.public_ip
-      redpanda_private_ips  = aws_instance.redpanda.*.private_ip
+      redpanda_public_ips   = [for r in aws_instance.redpanda: r.public_ip]
+      redpanda_private_ips  = [for r in aws_instance.redpanda: r.private_ip]
       clients_public_ips   = aws_instance.client.*.public_ip
       clients_private_ips  = aws_instance.client.*.private_ip
       prometheus_host_public_ips   = aws_instance.prometheus.*.public_ip

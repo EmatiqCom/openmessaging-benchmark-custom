@@ -398,7 +398,7 @@
       lineinfile:
         dest: /opt/benchmark/bin/benchmark-worker
         regexp: "^JVM_MEM="
-        line: 'JVM_MEM="-Xms16G -Xmx40G -XX:+UnlockExperimentalVMOptions -XX:+UseZGC -XX:+ParallelRefProcEnabled -XX:+DoEscapeAnalysis -XX:ParallelGCThreads=32 -XX:ConcGCThreads=32 -XX:+DisableExplicitGC -XX:-ResizePLAB"'
+        line: 'JVM_MEM="-Xms{{ clientMinJvmHeap }} -Xmx{{ clientMinJvmHeap }} -XX:+UseG1GC -XX:MaxGCPauseMillis=10 -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+DoEscapeAnalysis -XX:ParallelGCThreads=32 -XX:ConcGCThreads=32 -XX:G1NewSizePercent=50 -XX:+DisableExplicitGC -XX:-ResizePLAB -XX:+PerfDisableSharedMem -XX:+AlwaysPreTouch -XX:-UseBiasedLocking"'
     - name: Configure memory
       lineinfile:
         dest: /opt/benchmark/bin/benchmark
