@@ -1,26 +1,28 @@
 public_key_path = "~/.ssh/omb.pub"
-region          = "us-west-2"
-az		        = "us-west-2b"
-deploy_ami      = "ami-0d31d7c9fc9503726" # Ubuntu 20.04, AMD64
-ami             = "ami-09c3a3c2cf6003f6c" # Ubuntu 22.04, AMD64
+region          = "eu-west-1"
+az		        = "eu-west-1b"
+deploy_ami      = "ami-0be8b3ed4febc3ec0" # Ubuntu 20.04, AMD64
+ami             = "ami-0a422d70f727fe93e" # Ubuntu 22.04, AMD64
 
 instance_types = {
   "deploy"     = "t3.small"
-  "kafka"      = "m6in.4xlarge"
+  "kafka"      = "c6a.2xlarge"
   "zookeeper"  = "t2.medium"
-  "client"     = "c5n.4xlarge"
+  "client"     = "c6a.2xlarge"
   "prometheus" = "i3en.xlarge"
 }
 
 num_instances = {
   "deploy"     = 1
   "client"     = 2
-  "kafka"      = 3
-  "zookeeper"  = 3
+  "kafka"      = 1
+  "zookeeper"  = 0
   "prometheus" = 1
 }
 
-gp3_size_gb       = 3000
-gp3_iops          = 6000
+gp3_size_gb       = 1000
+gp3_iops          = 3000
 gp3_throughput_mb = 500
 gp3_count         = 1
+
+owner = "ematiq"

@@ -30,7 +30,6 @@ variable "region" {}
 variable "az" {}
 variable "deploy_ami" {}
 variable "ami" {}
-variable "profile" {}
 
 variable "gp3_size_gb" {}
 variable "gp3_throughput_mb" {}
