@@ -95,21 +95,21 @@
         line: "name: Kafka+SASL+TLS"
       with_items: "{{ drivers_list.stdout_lines }}"
 
-    - name: Configure Security Protocol
-      lineinfile:
-        dest: "{{ item }}"
-        regexp: "^  security.protocol="
-        insertafter: "^  bootstrap.servers="
-        line: "  security.protocol=SASL_SSL"
-      with_items: "{{ drivers_list.stdout_lines }}"
-
-    - name: Configure JAAS
-      lineinfile:
-        dest: "{{ item }}"
-        regexp: "^  sasl.jaas.config="
-        insertafter: "^  bootstrap.servers="
-        line: "  sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username='{{api_key}}' password='{{api_secret}}';"
-      with_items: "{{ drivers_list.stdout_lines }}"
+#    - name: Configure Security Protocol
+#      lineinfile:
+#        dest: "{{ item }}"
+#        regexp: "^  security.protocol="
+#        insertafter: "^  bootstrap.servers="
+#        line: "  security.protocol=SASL_SSL"
+#      with_items: "{{ drivers_list.stdout_lines }}"
+#
+#    - name: Configure JAAS
+#      lineinfile:
+#        dest: "{{ item }}"
+#        regexp: "^  sasl.jaas.config="
+#        insertafter: "^  bootstrap.servers="
+#        line: "  sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username='{{api_key}}' password='{{api_secret}}';"
+#      with_items: "{{ drivers_list.stdout_lines }}"
 
     - name: Configure memory
       lineinfile:

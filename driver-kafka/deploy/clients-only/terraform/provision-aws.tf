@@ -30,7 +30,6 @@ variable "region" {}
 variable "az" {}
 variable "runner_ami" {}
 variable "ami" {}
-variable "profile" {}
 
 variable "instance_types" {
   type = map
